@@ -1,0 +1,17 @@
+<!-- displays the available trips in a responsive grid -->
+<section class="container py-4">
+    <h2 class="mb-4">Available Trips</h2>
+
+    <div class="row g-4">
+        @for (trip of trips; track trip.code) {
+        <div class="col-12 col-md-6 col-lg-4">
+            <!-- passes trip data and handles deletion requests -->
+            <app-trip-card class="d-block h-100" [trip]="trip" (deleteRequested)="onDeleteTrip($event)">
+            </app-trip-card>
+
+        </div>
+        } @empty {
+        <p>No trips available.</p>
+        }
+    </div>
+</section>

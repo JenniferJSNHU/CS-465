@@ -1,0 +1,36 @@
+<div class="card h-100 shadow-sm">
+    <!-- displays the image associated with each trip -->
+    <img class="card-img-top" [src]="'/images/' + trip.image" [alt]="trip.name">
+
+    <div class="card-body">
+        <h3 class="card-title h4">{{ trip.name }}</h3>
+
+        <p class="card-text">
+            <strong>Code:</strong> {{ trip.code }}
+        </p>
+        <p class="card-text">
+            <strong>Duration:</strong> {{ trip.length }}
+        </p>
+        <p class="card-text">
+            <strong>Start Date:</strong> {{ trip.start.slice(0, 10) }}
+        </p>
+        <p class="card-text">
+            <strong>Resort:</strong> {{ trip.resort }}
+        </p>
+        <p class="card-text">
+            <strong>Price Per Person:</strong> ${{ trip.perPerson }}
+        </p>
+        <p class="card-text">{{ trip.description }}</p>
+
+        <!-- opens the edit form for the selected trip -->
+        <a [routerLink]="['/edit-trip', trip.code]" class="btn btn-primary mt-3">
+            Edit Trip
+        </a>
+
+        <!-- requests confirmation before deleting a trip -->
+        <button type="button" class="btn btn-outline-danger mt-3 ms-2" (click)="confirmDelete()">
+            Delete Trip
+        </button>
+
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<!-- main heading and navigation for the admin application -->
+<header class="container pt-3">
+  <h1 class="mb-3">Travlr Administration</h1>
+
+  <nav class="d-flex gap-2" aria-label="Admin navigation">
+    <a routerLink="/" class="btn btn-outline-primary">
+      View Trips
+    </a>
+
+    <a routerLink="/add-trip" class="btn btn-primary">
+      Add New Trip
+    </a>
+  </nav>
+</header>
+
+<!-- displays the component associated with the current route -->
+<router-outlet></router-outlet>
