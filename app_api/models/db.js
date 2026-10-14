@@ -66,7 +66,8 @@ process.on('SIGTERM', async () => {
 // make initial connection to database
 connect();
 
-// import mongoose schema
+// import mongoose schemas
 require('./travlr');
+require('./users');
 
 module.exports = mongoose;

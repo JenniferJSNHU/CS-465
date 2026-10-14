@@ -1,3 +1,4 @@
+require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -9,8 +10,12 @@ var indexRouter = require('./app_server/routes/index');
 var usersRouter = require('./app_server/routes/users');
 var travelRouter = require('./app_server/routes/travel');
 
-// connect to mongodb and register the trip model
+// connect to mongodb and register the models
 require('./app_api/models/db');
+
+// configure passport authentication
+var passport = require('passport');
+require('./app_api/config/passport');
 
 var apiRouter = require('./app_api/routes/index');
 
@@ -41,6 +46,9 @@ app.use('/api', (req, res, next) => {
 
   next();
 });
+
+// initialize passport authentication
+app.use(passport.initialize());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

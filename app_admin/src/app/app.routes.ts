@@ -1,26 +1,36 @@
-
 import { Routes } from '@angular/router';
 import { TripListing } from './trip-listing/trip-listing';
 import { AddTrip } from './add-trip/add-trip';
 import { EditTrip } from './edit-trip/edit-trip';
+import { Login } from './login/login';
+import { authGuard } from './auth.guard';
 
-// defines navigation routes for the admin application
+// define routes for the administration application
 export const routes: Routes = [
-  // displays all available trips
+  // trip listing requires authentication
   {
     path: '',
-    component: TripListing
+    component: TripListing,
+    canActivate: [authGuard]
   },
 
-  // displays the form for creating a new trip
+  // adding trips requires authentication
   {
     path: 'add-trip',
-    component: AddTrip
+    component: AddTrip,
+    canActivate: [authGuard]
   },
 
-  // displays the edit form for a selected trip
+  // editing trips requires authentication
   {
     path: 'edit-trip/:tripCode',
-    component: EditTrip
+    component: EditTrip,
+    canActivate: [authGuard]
+  },
+
+  // login remains accessible without authentication
+  {
+    path: 'login',
+    component: Login
   }
 ];

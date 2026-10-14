@@ -3,13 +3,31 @@
   <h1 class="mb-3">Travlr Administration</h1>
 
   <nav class="d-flex gap-2" aria-label="Admin navigation">
-    <a routerLink="/" class="btn btn-outline-primary">
-      View Trips
-    </a>
 
-    <a routerLink="/add-trip" class="btn btn-primary">
-      Add New Trip
-    </a>
+    @if (authentication.isLoggedIn()) {
+      <!-- navigation for authenticated administrators -->
+      <a routerLink="/" class="btn btn-outline-primary">
+        View Trips
+      </a>
+
+      <a routerLink="/add-trip" class="btn btn-primary">
+        Add New Trip
+      </a>
+
+      <!-- end the administrator session -->
+      <button
+        type="button"
+        class="btn btn-outline-danger"
+        (click)="logout()">
+        Logout
+      </button>
+    } @else {
+      <!-- navigation for unauthenticated visitors -->
+      <a routerLink="/login" class="btn btn-outline-primary">
+        Sign In
+      </a>
+    }
+
   </nav>
 </header>
 
